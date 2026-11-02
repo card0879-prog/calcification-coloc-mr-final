@@ -2,8 +2,14 @@
 
 Reproducible code and data for *"Colocalization-gated validity audit of drug-target
 Mendelian randomization in the PPi–TNAP axis"* (target journal: **G3: Genes|Genomes|Genetics**).
-Every statistic is **computed from the deposited summary data and 1000 Genomes European LD**;
-no value is hard-coded in any script.
+Every reported statistic is **computed from the deposited summary data and 1000 Genomes
+European LD** by `run_reanalysis.py` (MR, conditional/LD-aware analyses) and `run_coloc.py`
+(single-causal colocalisation posteriors), which write `results_reanalysis.csv` and
+`results_coloc.csv`. The figure scripts **read those computed result files** and do not
+embed statistics of their own — no headline value is hard-coded. Note that at the
+multi-signal *LPA* locus the single-causal `coloc.abf` posterior is **not** the verdict
+basis (it is reported in `results_coloc.csv` only for transparency, flagged in the `basis`
+column); the positive control is admitted by the conditional analysis in `run_reanalysis.py`.
 
 ## Reproduce
 
