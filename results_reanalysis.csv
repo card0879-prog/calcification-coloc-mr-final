@@ -1,6 +1,6 @@
 pair,recomputed,note,verdict
-Lp(a) -> CAVS,OR 1.29 (1.24-1.34),"shared signal r2=0.97; Lp(a) signals=8, CAVS signals=3",PASS
-Lp(a) -> CAC,"beta +0.125 (SE 0.035, P=0.0003)",CAC independent GWS signals at LPA = 0 (no outcome signal),non-colocalizing nominal
+Lp(a) -> CAVS,OR 1.29 (1.24-1.34),"shared signal r2=0.97; Lp(a) signals=8, CAVS signals=3; CAVS lead |Z| 12.4->1.2 on conditioning; effect allele T (harmonised)",PASS
+Lp(a) -> CAC,"beta +0.125 (SE 0.035, P=0.0003)",CAC independent GWS signals at LPA = 0 (no outcome signal); effect allele T (harmonised),non-colocalizing nominal
 GGT activity vs GGT1 blood (eQTLGen),"lead-pair r2=0.987, cross-var r=-0.89 (n=189)","same architecture, reversed direction",confirmed (blood misleading)
 GGT activity vs GGT1 liver,liver eQTL lead |Z|=4.3,GTEx liver n=208 underpowered,underpowered (no concordance claim)
 ANKH blood -> CAVS,coloc.abf PP.H4=0.27 PP.H1=0.71,single-signal locus; CAVS flat,non-colocalizing nominal
