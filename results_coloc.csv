@@ -1,4 +1,6 @@
-pair,nSNP,PP.H0,PP.H1,PP.H2,PP.H3,PP.H4
-Lp(a) -> CAVS,367,0.0,0.0,0.0,0.0016,0.9984
-ANKH blood -> CAVS,297,0.0,0.7113,0.0,0.0141,0.2746
-ENPP1 aorta -> CAC,12,0.226,0.7377,0.0005,0.0015,0.0343
+pair,nSNP,PP.H0,PP.H1,PP.H2,PP.H3,PP.H4,basis
+Lp(a) -> CAVS,367,0.0,0.0,0.0,0.0016,0.9984,"single-causal only; NOT verdict basis (multi-signal locus -> conditional, run_reanalysis.py)"
+Lp(a) -> CAC,345,0.0,0.0759,0.0,0.0051,0.919,"no genome-wide CAC signal at locus (0 outcome signals, run_reanalysis.py)"
+ANKH blood -> CAVS,297,0.0,0.7113,0.0,0.0141,0.2746,single-signal coloc.abf
+ENPP1 aorta -> CAC,12,0.2242,0.7318,0.0006,0.0018,0.0416,single-signal coloc.abf
+ENPP1 blood -> CAC,112,0.0,0.933,0.0,0.005,0.0621,single-signal coloc.abf
