@@ -70,7 +70,7 @@ ax.text(0.0,nR-0.05,'more convenient / powered',fontsize=8.2,color='#888',ha='le
 ax.text(3.0,nR-0.05,'more disease-relevant',fontsize=8.2,color='#888',ha='right',style='italic')
 
 # legend
-leg=[('PASS / compatible','PASS'),('moderate / partial','moderate'),('fail-coloc','failcoloc'),
+leg=[('PASS / compatible','PASS'),('fail-coloc','failcoloc'),
      ('non-colocalizing nominal','noncoloc'),('directionally reversed','reversed'),
      ('uninstrumentable','uninstr'),('underpowered','underpowered'),('reference exposure','ref')]
 handles=[Line2D([0],[0],marker=ST[k][0],color='none',markerfacecolor=ST[k][1],
