@@ -23,8 +23,8 @@ cells={
  (2,1):'noncoloc',(2,2):'failcoloc',
  (3,1):'noncoloc',(3,2):'uninstr',
  (4,2):'uninstr',
- (5,0):'ref',(5,1):'reversed',(5,3):'PASS',
- (6,0):'ref',(6,1):'uninstr',(6,3):'moderate',
+ (5,0):'ref',(5,1):'reversed',(5,3):'underpowered',
+ (6,0):'ref',(6,1):'uninstr',(6,3):'underpowered',
  (7,0):'ref',(7,1):'underpowered',(7,3):'underpowered',
 }
 nR,nC=len(rows),len(cols)
