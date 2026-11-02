@@ -71,6 +71,9 @@ nL,nC,nK=len(stepwise(zL,R)),len(stepwise(zC,R)),len(stepwise(zK,R))
 GLO,GHI=160852514,161185307
 inwin=np.where((bim.pos.values>=GLO)&(bim.pos.values<=GHI)&np.isfinite(zL))[0]
 ilead=inwin[np.argmax(np.abs(zL[inwin]))]
+# shared-variant demonstration: condition the primary CAVS signal on the Lp(a) exposure lead
+okC_=np.where(np.isfinite(zC))[0]; iCavs=okC_[int(np.argmax(np.abs(zC[okC_])))]
+rrC=R[iCavs,ilead]; zCmarg=abs(float(zC[iCavs])); zCcond=abs((float(zC[iCavs])-rrC*float(zC[ilead]))/np.sqrt(max(1-rrC**2,1e-6)))
 def wald_ld(ilead, zout_series_df, bcol,scol, rsidcol=None, posoff=0):
     # outcome beta/se at the instrument variant
     r=bim.iloc[ilead]
@@ -79,18 +82,27 @@ def wald_ld(ilead, zout_series_df, bcol,scol, rsidcol=None, posoff=0):
     else: m=o[(o['pos']==r['pos'])]
     m=m[[aset(a,b)==r['ak'] for a,b in zip(m[eacol],m[oacol])]] if False else m
     return m
-# simpler: pull outcome beta/se by rsid for CAVS, by pos for CAC, at instrument
-rI=bim.iloc[ilead]; beI=float(lpa[(lpa.pos==rI['pos'])].iloc[0].Effect)
+# pull outcome beta/se at the instrument, EXPLICITLY harmonising the effect allele
+# to the exposure effect allele (Lp(a) ALT) before taking the Wald ratio.
+rI=bim.iloc[ilead]; lpa_lead=lpa[(lpa.pos==rI['pos'])].iloc[0]
+beI=float(lpa_lead.Effect); ea_x=str(lpa_lead.ALT); oa_x=str(lpa_lead.REF)   # exposure effect allele = ALT
+def harmonise(bo, ea_out, oa_out):
+    """Return outcome beta sign-aligned to the exposure effect allele ea_x, or NaN on allele mismatch."""
+    if str(ea_out)==ea_x and str(oa_out)==oa_x: return bo
+    if str(ea_out)==oa_x and str(oa_out)==ea_x: return -bo
+    return float('nan')   # allele set does not match -> do not produce a mis-oriented estimate
 cav_m=cavs[cavs.rsids==rI['rsid']]
 if len(cav_m):
-    bo=float(cav_m.iloc[0].beta); so=float(cav_m.iloc[0].sebeta); w=bo/beI; sw=abs(so/beI)
+    cc=cav_m.iloc[0]; bo=harmonise(float(cc.beta), cc.alt, cc.ref); so=float(cc.sebeta)
+    w=bo/beI; sw=abs(so/beI)
     rows.append(('Lp(a) -> CAVS','OR %.2f (%.2f-%.2f)'%(np.exp(w),np.exp(w-1.96*sw),np.exp(w+1.96*sw)),
-                 f'shared signal r2=%.2f; Lp(a) signals=%d, CAVS signals=%d'%(R[ilead, int(stepwise(zC,R)[0])]**2 if nC else 0, nL,nC),'PASS'))
+                 f'shared signal r2=%.2f; Lp(a) signals=%d, CAVS signals=%d; CAVS lead |Z| %.1f->%.1f on conditioning; effect allele %s (harmonised)'%(rrC**2, nL,nC, zCmarg, zCcond, ea_x),'PASS'))
 cac_m=cac[(cac.pos==rI['pos'])]
 if len(cac_m):
-    bo=float(cac_m.iloc[0].beta); so=float(cac_m.iloc[0].standard_error); w=bo/beI; sw=abs(so/beI)
+    kk=cac_m.iloc[0]; bo=harmonise(float(kk.beta), kk.effect_allele, kk.other_allele); so=float(kk.standard_error)
+    w=bo/beI; sw=abs(so/beI)
     rows.append(('Lp(a) -> CAC','beta %+.3f (SE %.3f, P=%.1g)'%(w,sw,pv(w/sw)),
-                 f'CAC independent GWS signals at LPA = {nK} (no outcome signal)','non-colocalizing nominal'))
+                 f'CAC independent GWS signals at LPA = {nK} (no outcome signal); effect allele {ea_x} (harmonised)','non-colocalizing nominal'))
 
 # ---------------- GGT1 activity vs expression ----------------
 bg,Rg=load_ld('GGT1')
