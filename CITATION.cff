@@ -23,8 +23,8 @@ authors:
   - family-names: Zhang
     given-names: Haoshaqiang
     orcid: "https://orcid.org/0009-0003-4169-5179"
-version: 3.0.0
+version: 3.0.2
 date-released: 2026-11-02
 license: MIT
-doi: 10.5281/zenodo.23896549
+doi: 10.5281/zenodo.23896548
 repository-code: "https://github.com/card0879-prog/calcification-coloc-mr-final"
