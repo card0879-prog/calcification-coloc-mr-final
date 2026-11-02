@@ -1,0 +1,8 @@
+pair,recomputed,note,verdict
+Lp(a) -> CAVS,OR 1.29 (1.24-1.34),"shared signal r2=0.97; Lp(a) signals=8, CAVS signals=3",PASS
+Lp(a) -> CAC,"beta +0.125 (SE 0.035, P=0.0003)",CAC independent GWS signals at LPA = 0 (no outcome signal),non-colocalizing nominal
+GGT activity vs GGT1 blood (eQTLGen),"lead-pair r2=0.987, cross-var r=-0.89 (n=189)","same architecture, reversed direction",confirmed (blood misleading)
+GGT activity vs GGT1 liver,liver eQTL lead |Z|=4.3,GTEx liver n=208 underpowered,underpowered (no concordance claim)
+ANKH blood -> CAVS,coloc.abf PP.H4=0.27 PP.H1=0.71,single-signal locus; CAVS flat,non-colocalizing nominal
+ENPP1 aorta -> CAC,coloc.abf PP.H4=0.04 (quant),CAC quantitative; fail-coloc,fail-coloc
+ENPP1 blood -> CAC,"beta +0.84 (SE 0.39, P=0.033)",eQTLGen cis-lead rs9385589; nominal; not colocalizing (aorta PP.H4=0.04),nominal only

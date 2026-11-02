@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite the associated manuscript and this repository."
+title: "Colocalisation-gated validity audit of drug-target Mendelian randomization in the PPi-TNAP axis — analysis code and figures"
+authors:
+  - family-names: Guo
+    given-names: Wenjuan
+  - family-names: Zhang
+    given-names: Haoshaqiang
+version: 3.0.0
+date-released: 2026-10-29
+license: MIT
+# After Zenodo mints a DOI for this release, paste it below and uncomment:
+# doi: 10.5281/zenodo.XXXXXXX
