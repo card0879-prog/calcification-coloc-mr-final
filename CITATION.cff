@@ -1,13 +1,30 @@
 cff-version: 1.2.0
-message: "If you use this software or data, please cite the associated manuscript and this repository."
-title: "Colocalisation-gated validity audit of drug-target Mendelian randomization in the PPi-TNAP axis — analysis code and figures"
+message: "If you use this software or data, please cite the associated manuscript and this archived repository."
+title: "Colocalization-gated validity audit of drug-target Mendelian randomization in the PPi-TNAP axis — analysis code and data"
 authors:
   - family-names: Guo
     given-names: Wenjuan
+  - family-names: Wang
+    given-names: Li
+  - family-names: Wang
+    given-names: Zhijun
+  - family-names: Ma
+    given-names: Yinxiang
+  - family-names: Cao
+    given-names: Zhengyi
+  - family-names: Wang
+    given-names: Jie
+  - family-names: Luo
+    given-names: Cheng
+  - family-names: Xu
+    given-names: Kailang
+  - family-names: Ning
+    given-names: Kai
   - family-names: Zhang
     given-names: Haoshaqiang
+    orcid: "https://orcid.org/0009-0003-4169-5179"
 version: 3.0.0
-date-released: 2026-10-29
+date-released: 2026-11-02
 license: MIT
-# After Zenodo mints a DOI for this release, paste it below and uncomment:
-# doi: 10.5281/zenodo.XXXXXXX
+doi: 10.5281/zenodo.23896549
+repository-code: "https://github.com/card0879-prog/calcification-coloc-mr-final"
