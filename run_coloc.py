@@ -28,6 +28,12 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from coloc_abf import coloc_abf
 
 U = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data') + os.sep
+_RESTRICTED=['LPA_Lpa_b37.tsv','LPA_CAVS_b38.tsv','axis_CAVS_b38.tsv']
+_missing=[f for f in _RESTRICTED if not os.path.exists(U+f)]
+if _missing:
+    raise SystemExit('Missing input(s) not redistributed here: '+', '.join(_missing)+
+        '\nThese derive from UK Biobank (Sinnott-Armstrong) and FinnGen R12. Download them (free) '
+        'and place under data/ per data/RESTRICTED_INPUTS.md, then re-run.')
 
 def aset(a, b):
     return '_'.join(sorted([str(a), str(b)]))
