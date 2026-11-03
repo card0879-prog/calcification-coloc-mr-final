@@ -13,6 +13,10 @@ column); the positive control is admitted by the conditional analysis in `run_re
 
 ## Reproduce
 
+> First obtain six inputs that are **not redistributed here** (UK-Biobank–based
+> Sinnott-Armstrong biomarker GWAS and FinnGen R12 CAVS) — both are free; follow
+> [`data/RESTRICTED_INPUTS.md`](data/RESTRICTED_INPUTS.md). Every other input is included.
+
 ```bash
 pip install numpy pandas scipy matplotlib
 python run_reanalysis.py     # headline MR + colocalisation statistics -> results_reanalysis.csv
